@@ -7,7 +7,7 @@ description: |
   humans can actually spend their time doing things machines cannot.
 adopt-info: jenkins
 
-confinement: classic
+confinement: strict
 grade: stable
 
 apps:
@@ -18,7 +18,7 @@ apps:
           JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk"
           LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH"
         command: |
-            usr/lib/jvm/java-11-openjdk/bin/java -DJENKINS_HOME="$SNAP_DATA" -Djava.awt.headless=true -jar $SNAP/jenkins.war
+            usr/lib/jvm/java-11-openjdk/bin/java -DJENKINS_HOME="$SNAP_DATA" -Djava.awt.headless=true -jar $SNAP/jenkins.war --httpPort=8091
         daemon: simple
     config:
         command: jenkins-config
